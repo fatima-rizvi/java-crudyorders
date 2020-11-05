@@ -9,6 +9,7 @@ import com.lambdaschool.orders.repositories.AgentsRepository;
 import com.lambdaschool.orders.repositories.CustomersRepository;
 import com.lambdaschool.orders.repositories.OrdersRepository;
 import com.lambdaschool.orders.repositories.PaymentRepository;
+import com.lambdaschool.orders.services.AgentService;
 import com.lambdaschool.orders.services.CustomerService;
 import com.lambdaschool.orders.services.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,6 +59,10 @@ public class SeedData
     @Autowired
     OrderService orderService;
 
+//    Connect AgentService
+    @Autowired
+    AgentService agentService;
+
     /**
      * A Random generator is needed to randomly generate faker data.
      */
@@ -80,6 +85,7 @@ public class SeedData
         //Call out delete methods to delete all data before starting
         customerService.deleteAllCustomers();
         orderService.deleteAllOrders();
+        agentService.deleteAllAgents();
 
         Payment pay1 = new Payment("Cash");
         Payment pay2 = new Payment("Gift Card");

@@ -7,4 +7,7 @@ public interface AgentService {
 
     Agent findAgentByID(long agentID);
 
+    //Delete all agents, private from users
+    void deleteAllAgents();
+
 }

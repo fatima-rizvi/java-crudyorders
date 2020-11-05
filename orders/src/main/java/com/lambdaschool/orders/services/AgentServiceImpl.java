@@ -26,4 +26,10 @@ public class AgentServiceImpl implements AgentService{
         return agentrepo.findById(agentID)
                 .orElseThrow(() -> new EntityNotFoundException("Agent " + agentID + " not found."));
     }
+
+    @Transactional
+    @Override
+    public void deleteAllAgents() {
+        agentrepo.deleteAll();
+    }
 }
