@@ -19,4 +19,7 @@ public interface CustomerService {
 
     //Delete method
     void delete(long custcode);
+
+    //Delete all method, not available to all users. only to be used in seed data
+    void deleteAllCustomers();
 }

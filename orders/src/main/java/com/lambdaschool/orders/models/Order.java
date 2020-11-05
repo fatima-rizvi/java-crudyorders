@@ -8,6 +8,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "orders")
+@JsonIgnoreProperties(value = {"hasOrdamount", "hasAdvanceamount"}, allowSetters = true)
 public class Order {
 
     //Order primary key, long, not null
@@ -17,9 +18,13 @@ public class Order {
     private long ordnum;
 
     // order amount, double
+    @Transient
+    public boolean hasOrdamount = false;
     private double ordamount;
 
     // advance amount, double
+    @Transient
+    public boolean hasAdvanceamount = false;
     private double advanceamount;
 
     //order description, String
@@ -64,6 +69,7 @@ public class Order {
     }
 
     public void setOrdamount(double ordamount) {
+        hasOrdamount = true;
         this.ordamount = ordamount;
     }
 
@@ -72,6 +78,7 @@ public class Order {
     }
 
     public void setAdvanceamount(double advanceamount) {
+        hasAdvanceamount = true;
         this.advanceamount = advanceamount;
     }
 

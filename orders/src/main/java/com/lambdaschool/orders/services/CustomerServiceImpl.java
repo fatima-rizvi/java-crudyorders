@@ -159,4 +159,10 @@ public class CustomerServiceImpl implements CustomerService{
             throw new EntityNotFoundException("Customer " + custcode + " not found");
         }
     }
+
+    @Transactional
+    @Override
+    public void deleteAllCustomers() {
+        customerrepo.deleteAll();
+    }
 }
