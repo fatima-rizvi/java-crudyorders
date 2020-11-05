@@ -8,6 +8,10 @@ import java.util.List;
 
 @Entity
 @Table(name = "customers")
+@JsonIgnoreProperties(value = "hasOpeningamt", allowSetters = true)
+@JsonIgnoreProperties(value = "hasRecieveamt", allowSetters = true)
+@JsonIgnoreProperties(value = "hasPaymentamt", allowSetters = true)
+@JsonIgnoreProperties(value = "hasOutstandingamt", allowSetters = true)
 public class Customer {
 
     //The primary key on the customers' table, long, not null
@@ -33,19 +37,28 @@ public class Customer {
     private String grade;
 
     // customer opening amount, double
+    @Transient
+    public boolean hasOpeningamt = false;
     private double openingamt;
 
     // customer receiving amount, double
+    @Transient
+    public boolean hasReceiveamt = false;
     private double receiveamt;
 
     // customer payment amount, double
+    @Transient
+    public boolean hasPaymentamt = false;
     private double paymentamt;
 
     // customer outstanding amount, double
+    @Transient
+    public boolean hasOutstandingamt = false;
     private double outstandingamt;
 
     //customer phone string
     private String phone;
+
 
     // foreign agent key attached to customer, long foreign key, not null, (agentcode)
     //Many to one relationship to Agents, here are the annotations
@@ -133,6 +146,7 @@ public class Customer {
     }
 
     public void setOpeningamt(double openingamt) {
+        hasOpeningamt = true;
         this.openingamt = openingamt;
     }
 
@@ -141,6 +155,7 @@ public class Customer {
     }
 
     public void setReceiveamt(double receiveamt) {
+        hasReceiveamt = true;
         this.receiveamt = receiveamt;
     }
 
@@ -149,6 +164,7 @@ public class Customer {
     }
 
     public void setPaymentamt(double paymentamt) {
+        hasPaymentamt = true;
         this.paymentamt = paymentamt;
     }
 
@@ -157,6 +173,7 @@ public class Customer {
     }
 
     public void setOutstandingamt(double outstandingamt) {
+        hasOutstandingamt = true;
         this.outstandingamt = outstandingamt;
     }
 
@@ -183,4 +200,5 @@ public class Customer {
     public void setOrders(List<Order> orders) {
         this.orders = orders;
     }
+
 }

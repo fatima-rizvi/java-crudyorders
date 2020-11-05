@@ -8,10 +8,13 @@ public interface CustomerService {
 
     List<Customer> findAllCustomerOrders();
 
-    Customer save(Customer customer);
+    Customer save(Customer customer); //POST
 
     Customer findCustomerByID(long customerID);
 
     List<Customer> findCustomerByKeyword(String keyword);
+
+    //Update method
+    Customer update(Customer customer, long id);
 
 }
