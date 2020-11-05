@@ -8,7 +8,7 @@ public interface CustomerService {
 
     List<Customer> findAllCustomerOrders();
 
-    Customer save(Customer customer); //POST
+    Customer save(Customer customer); //POST/PATCH
 
     Customer findCustomerByID(long customerID);
 
@@ -17,4 +17,6 @@ public interface CustomerService {
     //Update method
     Customer update(Customer customer, long id);
 
+    //Delete method
+    void delete(long custcode);
 }

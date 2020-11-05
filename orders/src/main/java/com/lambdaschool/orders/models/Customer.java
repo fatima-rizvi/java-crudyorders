@@ -8,10 +8,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "customers")
-@JsonIgnoreProperties(value = "hasOpeningamt", allowSetters = true)
-@JsonIgnoreProperties(value = "hasRecieveamt", allowSetters = true)
-@JsonIgnoreProperties(value = "hasPaymentamt", allowSetters = true)
-@JsonIgnoreProperties(value = "hasOutstandingamt", allowSetters = true)
+@JsonIgnoreProperties(value = {"hasOpeningamt", "hasRecieveamt", "hasPaymentamt", "hasOutstandingamt"}, allowSetters = true)
 public class Customer {
 
     //The primary key on the customers' table, long, not null
