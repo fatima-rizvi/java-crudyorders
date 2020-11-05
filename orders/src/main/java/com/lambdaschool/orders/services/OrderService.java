@@ -8,4 +8,9 @@ public interface OrderService {
     Order update(Order order, long id); //PUT method
 
     Order findOrderByID(long orderID);
+
+    void delete(long ordernum); //Delete method
+
+    //Delete all method, private from users
+    void deleteAllOrders();
 }

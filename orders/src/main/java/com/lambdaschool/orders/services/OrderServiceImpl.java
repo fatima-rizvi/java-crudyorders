@@ -99,4 +99,20 @@ public class OrderServiceImpl implements OrderService{
         return orderrepo.findById(orderID)
                 .orElseThrow(() -> new EntityNotFoundException("Order " + orderID + " not found."));
     }
+
+    @Transactional
+    @Override
+    public void delete(long ordernum) {
+        if (orderrepo.findById(ordernum).isPresent()) {
+            orderrepo.deleteById(ordernum);
+        } else {
+            throw new EntityNotFoundException("Order " + ordernum + " not found");
+        }
+    }
+
+    @Transactional
+    @Override
+    public void deleteAllOrders() {
+        orderrepo.deleteAll();
+    }
 }
